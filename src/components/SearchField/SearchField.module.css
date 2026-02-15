@@ -20,10 +20,22 @@
   }
 }
 
+/* 
+
 .mouseEnterBorder {
   border: 1px solid palevioletred;
 }
 
 .focusedBorder {
+  border: 1px solid rgb(0, 172, 184);
+}
+
+*/
+
+.search:hover {
+  border: 1px solid palevioletred;
+}
+
+.search:focus {
   border: 1px solid rgb(0, 172, 184);
 }
