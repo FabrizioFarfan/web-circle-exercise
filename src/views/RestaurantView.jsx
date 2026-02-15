@@ -5,8 +5,11 @@ import MenuItem from "../components/MenuItem/MenuItem.jsx";
 import styles from "./RestaurantView.module.css";
 import NavBar from "../components/NavBar/NavBar.jsx";
 import SearchField from "../components/SearchField/SearchField.jsx";
+import Button from "../components/Button/Button.jsx";
+import { useNavigate } from "react-router-dom";
 
 const RestaurantView = () => {
+  const nav = useNavigate();
   const [dishes, setDishes] = useState([]);
   const [searchDish, setSearchDish] = useState([]);
 
@@ -60,6 +63,10 @@ const RestaurantView = () => {
         <h1>ReDI React Restaurant</h1>
 
         <SearchField setSearchDish={setSearchDish} />
+
+        <Button name={"whislist"} onClick={nav}>
+          Wishlist
+        </Button>
       </NavBar>
 
       <div className={styles.restaurantWrapper}>
