@@ -6,6 +6,7 @@ import RestaurantView from "./views/RestaurantView.jsx";
 
 import "./App.css";
 import { WishList } from "./components/WishList/WishList.jsx";
+import { WishlistProvider } from "./context/WishlistContext.jsx";
 
 function App() {
   return (
@@ -23,11 +24,14 @@ function App() {
 // Wrap App in an ErrorBoundary to help us with development bugs
 
 export default function WrappedApp() {
-  return import.meta.env.MODE === "development" ? (
-    <ErrorBoundary>
+  const appWrapper = (
+    <WishlistProvider>
       <App />
-    </ErrorBoundary>
+    </WishlistProvider>
+  );
+  return import.meta.env.MODE === "development" ? (
+    <ErrorBoundary>{appWrapper}</ErrorBoundary>
   ) : (
-    <App />
+    <WishlistProvider>{appWrapper}</WishlistProvider>
   );
 }

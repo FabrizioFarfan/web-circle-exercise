@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import Button from "../Button/Button";
 
 import styles from "./MenuItem.module.css";
-
+import { WishlistContext } from "../../context/WishlistContext";
 
 const MenuItemDetails = () => {
   // Hold a temporary value for meal until we fetch the real data. Show a loading message while it's null
@@ -15,6 +15,9 @@ const MenuItemDetails = () => {
   // Hooks from react-router-dom
   const navigate = useNavigate();
   const { id } = useParams();
+  const { wishlist, addToWishlist, removeFromWishlist } =
+    useContext(WishlistContext);
+  const isInWishlist = wishlist.includes(id);
   useEffect(() => {
     // Here is another API endpoint from themealdb.com where we can pass an individual ID
     // This is important to be able to load this route from a link by pasting in the direct URL
@@ -67,7 +70,22 @@ const MenuItemDetails = () => {
 
   return (
     <div className={styles.menuItemDetail}>
-      <Button onClick={() => navigate("/")}>return Home</Button>
+      <div className={styles.buttons}>
+        <Button onClick={() => navigate("/")}>return Home</Button>
+
+        <Button
+          onClick={() => {
+            if (isInWishlist) {
+              removeFromWishlist(id);
+            } else {
+              addToWishlist(id);
+            }
+          }}
+          name={id}
+        >
+          {isInWishlist ? "Remove from" : "Add to"} Wishlist
+        </Button>
+      </div>
       <h1>{meal.strMeal}</h1>
       <img
         src={meal.strMealThumb}
