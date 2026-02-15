@@ -13,9 +13,15 @@ export const WishlistProvider = ({ children }) => {
   }, [wishlist]);
 
   const addToWishlist = (dish) => {
+    const minimalDish = {
+      idMeal: dish.idMeal,
+      strMeal: dish.strMeal,
+      strMealThumb: dish.strMealThumb,
+    };
+
     setWishlist((prev) => {
-      if (prev.some((d) => d.idMeal === dish.idMeal)) return prev;
-      return [...prev, dish];
+      if (prev.some((d) => d.idMeal === minimalDish.idMeal)) return prev;
+      return [...prev, minimalDish];
     });
   };
 
