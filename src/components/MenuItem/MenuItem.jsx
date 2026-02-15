@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { WishlistContext } from "../../context/WishlistContext";
 
 const MenuItem = ({ dish }) => {
-  const { wishlist, isInWishlist } = useContext(WishlistContext);
+  const { isInWishlist } = useContext(WishlistContext);
   const { strMeal: name, strMealThumb: image } = dish;
   const navigate = useNavigate();
   return (
