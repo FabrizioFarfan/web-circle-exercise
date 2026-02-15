@@ -5,6 +5,7 @@ import MenuItemDetails from "./components/MenuItem/MenuItemDetails.jsx";
 import RestaurantView from "./views/RestaurantView.jsx";
 
 import "./App.css";
+import { WishList } from "./components/WishList/WishList.jsx";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route index element={<RestaurantView />} />
         <Route path="/meals/:id" element={<MenuItemDetails />} />
+        <Route path="/wishlist" element={<WishList />} />
         <Route path="/*" element={<p>404 Page not found</p>} />
       </Routes>
     </Router>

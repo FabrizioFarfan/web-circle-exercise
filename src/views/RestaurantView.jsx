@@ -64,7 +64,7 @@ const RestaurantView = () => {
 
         <SearchField setSearchDish={setSearchDish} />
 
-        <Button name={"whislist"} onClick={nav}>
+        <Button name={"wishlist"} onClick={nav}>
           Wishlist
         </Button>
       </NavBar>
