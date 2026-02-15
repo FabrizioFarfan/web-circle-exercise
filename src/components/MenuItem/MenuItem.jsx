@@ -5,8 +5,7 @@ import { useContext } from "react";
 import { WishlistContext } from "../../context/WishlistContext";
 
 const MenuItem = ({ dish }) => {
-  const { wishlist } = useContext(WishlistContext);
-  const isInWishlist = wishlist.includes(dish.idMeal);
+  const { wishlist, isInWishlist } = useContext(WishlistContext);
   const { strMeal: name, strMealThumb: image } = dish;
   const navigate = useNavigate();
   return (
@@ -14,7 +13,7 @@ const MenuItem = ({ dish }) => {
       <h3>
         {name}
 
-        {isInWishlist && " ❤️"}
+        {isInWishlist(dish.idMeal) && " ❤️"}
       </h3>
       <img src={image} alt={name} />
       <div className={styles.menuItemBtnContainer}>
