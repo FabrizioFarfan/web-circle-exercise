@@ -1,13 +1,21 @@
 import { useNavigate } from "react-router-dom";
 import Button from "../Button/Button";
 import styles from "./MenuItem.module.css";
+import { useContext } from "react";
+import { WishlistContext } from "../../context/WishlistContext";
 
 const MenuItem = ({ dish }) => {
+  const { wishlist } = useContext(WishlistContext);
+  const isInWishlist = wishlist.includes(dish.idMeal);
   const { strMeal: name, strMealThumb: image } = dish;
   const navigate = useNavigate();
   return (
     <div className={styles.menuItem}>
-      <h3>{name}</h3>
+      <h3>
+        {name}
+
+        {isInWishlist && " ❤️"}
+      </h3>
       <img src={image} alt={name} />
       <div className={styles.menuItemBtnContainer}>
         <Button onClick={() => navigate(`/meals/${dish.idMeal}`)}>
