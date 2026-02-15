@@ -13,7 +13,7 @@ const MenuItem = ({ dish }) => {
       <h3>
         {name}
 
-        {isInWishlist(dish.idMeal) && " ❤️"}
+        {isInWishlist(dish.idMeal) && " 💙"}
       </h3>
       <img src={image} alt={name} />
       <div className={styles.menuItemBtnContainer}>

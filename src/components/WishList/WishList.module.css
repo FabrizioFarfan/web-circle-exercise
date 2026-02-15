@@ -1,3 +1,13 @@
+.headerContainer {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  justify-content: center;
+  background-color: lightblue;
+  padding: 20px;
+}
+
 .restaurantWrapper {
   max-width: 1080px;
   margin: var(--nav-height) auto 0 auto;
